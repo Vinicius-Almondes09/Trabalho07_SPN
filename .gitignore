@@ -1,0 +1,26 @@
+﻿# Arquivos temporarios de testes
+/teste_reproducao_github/
+
+# Backups
+*.bak
+/experimentos/E1_taxa_chegada/modelo_referencia_backup.json
+
+# Scripts e graficos antigos
+/resultados/gerar_grafico_E1.py
+/resultados/grafico_E1_tempo_resposta.png
+
+# Arquivos gerados pelo Python
+__pycache__/
+*.pyc
+
+# Ambientes virtuais
+.venv/
+venv/
+
+# Arquivos temporarios do sistema
+Thumbs.db
+.DS_Store
+
+# Arquivos temporarios de editores
+*.tmp
+*.swp

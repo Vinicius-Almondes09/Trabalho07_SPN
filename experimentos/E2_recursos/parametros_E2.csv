@@ -1,0 +1,4 @@
+﻿"Cenario","TaxaChegada_req_s","Recursos","Capacidade","TempoProcessamento_s","FormulaUtilizacao"
+"E2_01","0.6","1","8","2","E{#Processamento}/1*100"
+"E2_02","0.6","2","8","2","E{#Processamento}/2*100"
+"E2_03","0.6","3","8","2","E{#Processamento}/3*100"

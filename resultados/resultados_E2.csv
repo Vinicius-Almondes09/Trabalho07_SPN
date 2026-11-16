@@ -1,0 +1,4 @@
+﻿"Cenario","TaxaChegada_req_s","Recursos","Capacidade","FilaMedia_requisicoes","Throughput_req_s","Utilizacao_percentual","TempoMedioResposta_s","TempoMedioEspera_s","ProbabilidadeDescarte_percentual"
+"E2_01","0.6","1","8","4.1531","0.4760","95.1919","10.7191","8.7191","19.4945"
+"E2_02","0.6","2","8","0.5603","0.5940","59.4015","2.9365","0.9365","0.8163"
+"E2_03","0.6","3","8","0.0927","0.6009","40.0627","2.1529","0.1529","0.0899"

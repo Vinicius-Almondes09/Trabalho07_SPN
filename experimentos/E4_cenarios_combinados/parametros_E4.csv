@@ -1,0 +1,4 @@
+﻿"Cenario","Demanda","TaxaChegada_req_s","TempoEntreChegadas_s","Recursos","Capacidade","TempoProcessamento_s"
+"E4_01","Baixa","0.2","5","1","8","2"
+"E4_02","Moderada","0.6","1.6666667","2","8","2"
+"E4_03","Alta","1.0","1","3","8","2"

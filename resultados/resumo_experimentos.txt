@@ -1,0 +1,23 @@
+﻿TRABALHO 07 - RESULTADOS CONSOLIDADOS
+Total de cenarios: 14
+
+E1 - Taxa de chegada: 5 cenarios
+E2 - Recursos: 3 cenarios
+E3 - Capacidade: 3 cenarios
+E4 - Cenarios combinados: 3 cenarios
+
+INDICADORES POR CENARIO
+E1_01: TP=0.1993 req/s; Resposta=2.0816 s; Descarte=0.0000%
+E1_02: TP=0.3948 req/s; Resposta=2.3622 s; Descarte=0.0508%
+E1_03: TP=0.5916 req/s; Resposta=2.9436 s; Descarte=0.7976%
+E1_04: TP=0.7644 req/s; Resposta=3.8125 s; Descarte=4.2077%
+E1_05: TP=0.8825 req/s; Resposta=4.8111 s; Descarte=12.0038%
+E2_01: TP=0.4760 req/s; Resposta=10.7191 s; Descarte=19.4945%
+E2_02: TP=0.5940 req/s; Resposta=2.9365 s; Descarte=0.8163%
+E2_03: TP=0.6009 req/s; Resposta=2.1529 s; Descarte=0.0899%
+E3_01: TP=0.5571 req/s; Resposta=2.4719 s; Descarte=7.2335%
+E3_02: TP=0.5944 req/s; Resposta=2.9466 s; Descarte=0.8081%
+E3_03: TP=0.5976 req/s; Resposta=3.0829 s; Descarte=0.0963%
+E4_01: TP=0.1973 req/s; Resposta=3.2548 s; Descarte=0.0236%
+E4_02: TP=0.5913 req/s; Resposta=2.9585 s; Descarte=0.8383%
+E4_03: TP=0.9778 req/s; Resposta=2.6055 s; Descarte=1.9518%

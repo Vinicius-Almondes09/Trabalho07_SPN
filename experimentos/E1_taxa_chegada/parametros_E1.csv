@@ -1,0 +1,6 @@
+﻿"Cenario","Taxa_req_s","TempoMedio_s","Recursos","CapacidadeTotal","ProcessamentoMedio_s","Arquivo"
+"E1_01","0.2","5","2","8","2","E1_01_modelo.json"
+"E1_02","0.4","2.5","2","8","2","E1_02_modelo.json"
+"E1_03","0.6","1.6666667","2","8","2","E1_03_modelo.json"
+"E1_04","0.8","1.25","2","8","2","E1_04_modelo.json"
+"E1_05","1.0","1","2","8","2","E1_05_modelo.json"

@@ -1,0 +1,379 @@
+﻿{
+    "modelName":  "Trabalho07_SPN_E3_01",
+    "places":  [
+                   {
+                       "name":  "Chegada",
+                       "initialMarking":  0,
+                       "stringMarking":  "0",
+                       "initialStringMarking":  "0",
+                       "id":  "p1",
+                       "x":  458,
+                       "y":  431
+                   },
+                   {
+                       "name":  "Espera",
+                       "initialMarking":  0,
+                       "stringMarking":  "0",
+                       "initialStringMarking":  "0",
+                       "id":  "p2",
+                       "x":  865,
+                       "y":  431
+                   },
+                   {
+                       "name":  "VagasLivres",
+                       "initialMarking":  4,
+                       "stringMarking":  "4",
+                       "initialStringMarking":  "4",
+                       "id":  "p3",
+                       "x":  658,
+                       "y":  267.5
+                   },
+                   {
+                       "name":  "RecursosLivres",
+                       "initialMarking":  2,
+                       "stringMarking":  "2",
+                       "initialStringMarking":  "2",
+                       "id":  "p4",
+                       "x":  1065,
+                       "y":  628.4560515353133
+                   },
+                   {
+                       "name":  "Processamento",
+                       "initialMarking":  0,
+                       "stringMarking":  "0",
+                       "initialStringMarking":  "0",
+                       "id":  "p5",
+                       "x":  1253,
+                       "y":  431
+                   }
+               ],
+    "definitions":  [
+
+                    ],
+    "rewardMeasures":  [
+                           {
+                               "name":  "FilaMedia",
+                               "expression":  "E{#Espera}",
+                               "id":  "metric1794748831222",
+                               "unit":  "requisicoes"
+                           },
+                           {
+                               "name":  "Throughput",
+                               "expression":  "E{#Processamento}/2",
+                               "id":  "metric1794748890168",
+                               "unit":  "requisicoes/s"
+                           },
+                           {
+                               "name":  "Utilizacao",
+                               "expression":  "E{#Processamento}/2*100",
+                               "id":  "metric1794748990403",
+                               "unit":  "%"
+                           },
+                           {
+                               "name":  "TempoMedioResposta",
+                               "expression":  "E{#Espera + #Processamento}/(E{#Processamento}/2)",
+                               "id":  "metric1794749034293",
+                               "unit":  "segundos"
+                           },
+                           {
+                               "name":  "TempoMedioEspera",
+                               "expression":  "E{#Espera}/(E{#Processamento}/2)",
+                               "id":  "metric1794749191654",
+                               "unit":  "segundos"
+                           },
+                           {
+                               "name":  "ProbabilidadeDescarte",
+                               "expression":  "P{#VagasLivres == 0}*100",
+                               "id":  "metric1794749231523",
+                               "unit":  "%"
+                           }
+                       ],
+    "transitions":  [
+                        {
+                            "name":  "GerarRequisicao",
+                            "type":  "TIMED",
+                            "firingPolicy":  "SINGLE_SERVER",
+                            "raceType":  "RACE_WITH_ENABLING_MEMORY",
+                            "priority":  1,
+                            "inputArcs":  [
+
+                                          ],
+                            "outputArcs":  [
+                                               {
+                                                   "type":  "OUTPUT",
+                                                   "place":  "Chegada",
+                                                   "multiplicity":  1,
+                                                   "weight":  1
+                                               }
+                                           ],
+                            "inhibitorArcs":  [
+
+                                              ],
+                            "distribution":  {
+                                                 "type":  "exponential",
+                                                 "parameters":  {
+                                                                    "Mean delay":  "1.6666667"
+                                                                }
+                                             },
+                            "id":  "t1",
+                            "x":  190,
+                            "y":  436
+                        },
+                        {
+                            "name":  "Admissao",
+                            "type":  "IMMEDIATE",
+                            "firingPolicy":  "SINGLE_SERVER",
+                            "raceType":  "RACE_WITH_ENABLING_MEMORY",
+                            "priority":  1,
+                            "inputArcs":  [
+                                              {
+                                                  "type":  "INPUT",
+                                                  "place":  "Chegada",
+                                                  "multiplicity":  1,
+                                                  "weight":  1
+                                              },
+                                              {
+                                                  "type":  "INPUT",
+                                                  "place":  "VagasLivres",
+                                                  "multiplicity":  1,
+                                                  "weight":  1
+                                              }
+                                          ],
+                            "outputArcs":  [
+                                               {
+                                                   "type":  "OUTPUT",
+                                                   "place":  "Espera",
+                                                   "multiplicity":  1,
+                                                   "weight":  1
+                                               }
+                                           ],
+                            "inhibitorArcs":  [
+
+                                              ],
+                            "weight":  1,
+                            "id":  "t2",
+                            "x":  658,
+                            "y":  431
+                        },
+                        {
+                            "name":  "IniciarProcessamento",
+                            "type":  "IMMEDIATE",
+                            "firingPolicy":  "SINGLE_SERVER",
+                            "raceType":  "RACE_WITH_ENABLING_MEMORY",
+                            "priority":  1,
+                            "inputArcs":  [
+                                              {
+                                                  "type":  "INPUT",
+                                                  "place":  "Espera",
+                                                  "multiplicity":  1,
+                                                  "weight":  1
+                                              },
+                                              {
+                                                  "type":  "INPUT",
+                                                  "place":  "RecursosLivres",
+                                                  "multiplicity":  1,
+                                                  "weight":  1
+                                              }
+                                          ],
+                            "outputArcs":  [
+                                               {
+                                                   "type":  "OUTPUT",
+                                                   "place":  "Processamento",
+                                                   "multiplicity":  1,
+                                                   "weight":  1
+                                               }
+                                           ],
+                            "inhibitorArcs":  [
+
+                                              ],
+                            "weight":  1,
+                            "id":  "t3",
+                            "x":  1065,
+                            "y":  431
+                        },
+                        {
+                            "name":  "FinalizarProcessamento",
+                            "type":  "TIMED",
+                            "firingPolicy":  "INFINITY_SERVER",
+                            "raceType":  "RACE_WITH_ENABLING_MEMORY",
+                            "priority":  1,
+                            "inputArcs":  [
+                                              {
+                                                  "type":  "INPUT",
+                                                  "place":  "Processamento",
+                                                  "multiplicity":  1,
+                                                  "weight":  1
+                                              }
+                                          ],
+                            "outputArcs":  [
+                                               {
+                                                   "type":  "OUTPUT",
+                                                   "place":  "RecursosLivres",
+                                                   "multiplicity":  1,
+                                                   "weight":  1
+                                               },
+                                               {
+                                                   "type":  "OUTPUT",
+                                                   "place":  "VagasLivres",
+                                                   "multiplicity":  1,
+                                                   "weight":  1
+                                               }
+                                           ],
+                            "inhibitorArcs":  [
+
+                                              ],
+                            "distribution":  {
+                                                 "type":  "exponential",
+                                                 "parameters":  {
+                                                                    "Mean delay":  "2.0"
+                                                                }
+                                             },
+                            "id":  "t4",
+                            "x":  1460,
+                            "y":  431
+                        },
+                        {
+                            "name":  "DescartarRequisicao",
+                            "type":  "IMMEDIATE",
+                            "firingPolicy":  "SINGLE_SERVER",
+                            "raceType":  "RACE_WITH_ENABLING_MEMORY",
+                            "priority":  1,
+                            "logicCondition":  "#VagasLivres == 0",
+                            "inputArcs":  [
+                                              {
+                                                  "type":  "INPUT",
+                                                  "place":  "Chegada",
+                                                  "multiplicity":  1,
+                                                  "weight":  1
+                                              }
+                                          ],
+                            "outputArcs":  [
+
+                                           ],
+                            "inhibitorArcs":  [
+
+                                              ],
+                            "weight":  1,
+                            "id":  "t5",
+                            "x":  458,
+                            "y":  604.4560515353133
+                        }
+                    ],
+    "visualElements":  [
+
+                       ],
+    "arcs":  [
+                 {
+                     "id":  "a1",
+                     "source":  "t1",
+                     "target":  "p1",
+                     "type":  "normal",
+                     "weight":  "1",
+                     "sourceAnchor":  "right",
+                     "targetAnchorAngle":  170.53767779197437,
+                     "lineType":  "straight"
+                 },
+                 {
+                     "id":  "a2",
+                     "source":  "p1",
+                     "target":  "t2",
+                     "type":  "normal",
+                     "weight":  "1",
+                     "sourceAnchor":  "right",
+                     "targetAnchorAngle":  180,
+                     "lineType":  "straight"
+                 },
+                 {
+                     "id":  "a3",
+                     "source":  "p3",
+                     "target":  "t2",
+                     "type":  "normal",
+                     "weight":  "1",
+                     "sourceAnchor":  "bottom",
+                     "targetAnchorAngle":  270,
+                     "lineType":  "straight"
+                 },
+                 {
+                     "id":  "a5",
+                     "source":  "p2",
+                     "target":  "t3",
+                     "type":  "normal",
+                     "weight":  "1",
+                     "sourceAnchor":  "right",
+                     "targetAnchorAngle":  180,
+                     "lineType":  "straight"
+                 },
+                 {
+                     "id":  "a6",
+                     "source":  "p4",
+                     "target":  "t3",
+                     "type":  "normal",
+                     "weight":  "1",
+                     "sourceAnchor":  "bottom",
+                     "targetAnchorAngle":  270,
+                     "lineType":  "straight"
+                 },
+                 {
+                     "id":  "a7",
+                     "source":  "t3",
+                     "target":  "p5",
+                     "type":  "normal",
+                     "weight":  "1",
+                     "sourceAnchor":  "right",
+                     "targetAnchorAngle":  180,
+                     "lineType":  "straight"
+                 },
+                 {
+                     "id":  "a4",
+                     "source":  "t2",
+                     "target":  "p2",
+                     "type":  "normal",
+                     "weight":  "1",
+                     "sourceAnchor":  "right",
+                     "targetAnchorAngle":  180,
+                     "lineType":  "straight"
+                 },
+                 {
+                     "id":  "a8",
+                     "source":  "p5",
+                     "target":  "t4",
+                     "type":  "normal",
+                     "weight":  "1",
+                     "sourceAnchor":  "right",
+                     "targetAnchorAngle":  161.1068135975397,
+                     "lineType":  "straight"
+                 },
+                 {
+                     "id":  "a9",
+                     "source":  "t4",
+                     "target":  "p4",
+                     "type":  "normal",
+                     "weight":  "1",
+                     "sourceAnchorAngle":  90,
+                     "targetAnchorAngle":  0,
+                     "lineType":  "straight"
+                 },
+                 {
+                     "id":  "a10",
+                     "source":  "t4",
+                     "target":  "p3",
+                     "type":  "normal",
+                     "weight":  "1",
+                     "sourceAnchor":  "top",
+                     "targetAnchorAngle":  0,
+                     "lineType":  "straight"
+                 },
+                 {
+                     "id":  "a11",
+                     "source":  "p1",
+                     "target":  "t5",
+                     "type":  "normal",
+                     "weight":  "1",
+                     "sourceAnchor":  "bottom",
+                     "targetAnchorAngle":  270,
+                     "lineType":  "straight"
+                 }
+             ],
+    "chartSquare":  false,
+    "timeUnit":  "s"
+}
