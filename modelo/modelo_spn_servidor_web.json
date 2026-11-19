@@ -1,5 +1,5 @@
 {
-  "modelName": "Trabalho07_SPN_Servidor_Web",
+  "modelName": "modelo_spn_servidor_web",
   "places": [
     {
       "name": "Chegada",
@@ -179,7 +179,9 @@
       "weight": 1,
       "id": "t3",
       "x": 1065,
-      "y": 431
+      "y": 431,
+      "labelX": 1065,
+      "labelY": 476
     },
     {
       "name": "FinalizarProcessamento",
@@ -291,9 +293,9 @@
       "target": "t3",
       "type": "normal",
       "weight": "1",
-      "sourceAnchor": "bottom",
-      "targetAnchorAngle": 270,
-      "lineType": "straight"
+      "targetAnchorAngle": 90,
+      "lineType": "straight",
+      "sourceAnchorAngle": 270
     },
     {
       "id": "a7",

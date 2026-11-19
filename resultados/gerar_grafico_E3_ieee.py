@@ -1,6 +1,7 @@
-﻿import csv
+import csv
 from pathlib import Path
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
 
 pasta = Path(__file__).resolve().parent
 
@@ -36,12 +37,15 @@ fig, ax = plt.subplots(figsize=(3.5, 2.5))
 
 ax.plot(capacidades, tempos, marker="o", linewidth=1.5, markersize=4)
 
-ax.set_xlabel("Capacidade total (requisicoes)")
-ax.set_ylabel("Tempo medio de resposta (s)")
+ax.set_xlabel("Capacidade total (requisições)")
+ax.set_ylabel("Tempo médio de resposta (s)")
 ax.set_xticks([4, 8, 12])
 ax.set_xlim(3, 13)
 ax.grid(True, linestyle="--", linewidth=0.5, alpha=0.5)
 
+ax.yaxis.set_major_formatter(
+    FuncFormatter(lambda x, pos: f"{x:g}".replace(".", ","))
+)
 fig.tight_layout(pad=0.8)
 
 png = pasta / "grafico_E3_tempo_resposta_ieee.png"

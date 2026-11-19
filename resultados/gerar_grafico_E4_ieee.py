@@ -1,6 +1,7 @@
-﻿import csv
+import csv
 from pathlib import Path
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
 
 pasta = Path(__file__).resolve().parent
 arquivo = pasta / "resultados_E4.csv"
@@ -35,12 +36,16 @@ plt.rcParams.update({
 
 fig, ax = plt.subplots(figsize=(3.5, 2.5))
 
-ax.plot(nomes, tempos, marker="o", linewidth=1.5, markersize=4)
+ax.bar(nomes, tempos, width=0.55)
+ax.set_ylim(0, max(tempos) * 1.18)
 
-ax.set_xlabel("Cenarios combinados")
-ax.set_ylabel("Tempo medio de resposta (s)")
+ax.set_xlabel("Cenários combinados")
+ax.set_ylabel("Tempo médio de resposta (s)")
 ax.grid(True, axis="y", linestyle="--", linewidth=0.5, alpha=0.5)
 
+ax.yaxis.set_major_formatter(
+    FuncFormatter(lambda x, pos: f"{x:g}".replace(".", ","))
+)
 fig.tight_layout(pad=0.8)
 
 png = pasta / "grafico_E4_tempo_resposta_ieee.png"

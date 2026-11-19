@@ -1,5 +1,6 @@
-﻿import csv
+import csv
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
 from pathlib import Path
 
 pasta = Path(__file__).resolve().parent
@@ -38,12 +39,18 @@ fig, ax = plt.subplots(figsize=(3.5, 2.5))
 ax.plot(taxas, tempos, marker="o", linewidth=1.5, markersize=4)
 
 ax.set_xlabel("Taxa de chegada (req/s)")
-ax.set_ylabel("Tempo medio de resposta (s)")
+ax.set_ylabel("Tempo médio de resposta (s)")
 
 ax.set_xticks(taxas)
 ax.set_xlim(0.15, 1.05)
 ax.grid(True, linestyle="--", linewidth=0.5, alpha=0.5)
 
+ax.yaxis.set_major_formatter(
+    FuncFormatter(lambda x, pos: f"{x:g}".replace(".", ","))
+)
+ax.xaxis.set_major_formatter(
+    FuncFormatter(lambda x, pos: f"{x:g}".replace(".", ","))
+)
 fig.tight_layout(pad=0.8)
 
 fig.savefig(saida_png, dpi=300, bbox_inches="tight")

@@ -24,3 +24,6 @@ Thumbs.db
 # Arquivos temporarios de editores
 *.tmp
 *.swp
+
+# Pasta temporaria de validacao dos graficos
+/teste_reproducao_final_01/
